@@ -84,7 +84,10 @@ DATABASES = {
     }
 }
 
+#DATABASES['default'] = dj_database_url.config(default='postgres://rwysuyvvwinbtq:7cf036e8973918be0681900ed4fd16060b5192890c12316d9751db2310d21366@ec2-54-243-212-227.compute-1.amazonaws.com:5432/ddbhsfuftaf9ql')
+
 DATABASES['default'] = dj_database_url.config(default='postgres://rwysuyvvwinbtq:7cf036e8973918be0681900ed4fd16060b5192890c12316d9751db2310d21366@ec2-54-243-212-227.compute-1.amazonaws.com:5432/ddbhsfuftaf9ql')
+
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
