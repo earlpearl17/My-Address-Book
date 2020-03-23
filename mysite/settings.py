@@ -11,9 +11,9 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import django_heroku
-from decouple import config
-import dj_database_url
+#import django_heroku
+#from decouple import config
+#import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'f%i%@i-ltou#15uim5wry4bh1r!8ko-5pz+e#95fh=qs95p@)u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -81,17 +81,14 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'addressbookdb',
+        'USER': 'postgres',
+        'PASSWORD': 'Pa$$w0rd',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
-
-#DATABASES['default'] = dj_database_url.config(default='postgres://rwysuyvvwinbtq:7cf036e8973918be0681900ed4fd16060b5192890c12316d9751db2310d21366@ec2-54-243-212-227.compute-1.amazonaws.com:5432/ddbhsfuftaf9ql')
-
-DATABASES['default'] = dj_database_url.config(default='postgres://rwysuyvvwinbtq:7cf036e8973918be0681900ed4fd16060b5192890c12316d9751db2310d21366@ec2-54-243-212-227.compute-1.amazonaws.com:5432/ddbhsfuftaf9ql')
-
-
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -131,9 +128,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'address_book/static/')
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static')
+# ]
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressManifestStaticFilesStorage'
 
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
