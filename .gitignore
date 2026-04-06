@@ -12,4 +12,5 @@ db.sqlite3
 /static
 ab_db.json
 myvenv/
+ab_venv/
 
